@@ -1,12 +1,12 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Select } from '@/components/ui/select';
-import { Button } from '@/components/ui/button';
-import { dataService, FilterOptions } from '@/lib/api';
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
+import { Select } from '../ui/select';
+import { Button } from '../ui/button';
+import { dataService, FilterOptions } from '../../lib/api';
 import { X, Loader2, AlertCircle } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
+import { Badge } from '../ui/badge';
 
 interface FilterPanelProps {
   filters: FilterOptions;
@@ -28,10 +28,10 @@ export default function FilterPanel({ filters, onFiltersChange }: FilterPanelPro
         const timeoutPromise = new Promise((_, reject) =>
           setTimeout(() => reject(new Error('Request timeout')), 10000)
         );
-        
+
         const responsePromise = dataService.getFilterOptions();
         const response = await Promise.race([responsePromise, timeoutPromise]) as any;
-        
+
         if (response && response.options) {
           setFilterOptions(response.options);
         } else {
@@ -41,7 +41,7 @@ export default function FilterPanel({ filters, onFiltersChange }: FilterPanelPro
         console.error('Failed to load filter options:', error);
         setError(error.message || 'Failed to load filter options. Please refresh the page.');
         // Retry after 3 seconds
-       
+
       } finally {
         setLoading(false);
       }
@@ -54,7 +54,7 @@ export default function FilterPanel({ filters, onFiltersChange }: FilterPanelPro
     value?: string | string[]
   ) => {
     const newFilters: FilterOptions = { ...localFilters };
-  
+
     // Remove filter
     if (
       value === undefined ||
@@ -65,14 +65,14 @@ export default function FilterPanel({ filters, onFiltersChange }: FilterPanelPro
       setLocalFilters(newFilters);
       return;
     }
-  
+
     switch (key) {
       case 'endYear':
         if (typeof value === 'string') {
           newFilters.endYear = value;
         }
         break;
-  
+
       case 'topics':
       case 'sector':
       case 'region':
@@ -85,12 +85,12 @@ export default function FilterPanel({ filters, onFiltersChange }: FilterPanelPro
         }
         break;
     }
-  
+
     setLocalFilters(newFilters);
   };
-  
-  
-  
+
+
+
 
   const handleApplyFilters = () => {
     onFiltersChange(localFilters);

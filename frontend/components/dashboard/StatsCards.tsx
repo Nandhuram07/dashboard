@@ -1,7 +1,7 @@
 'use client';
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { DashboardStats } from '@/lib/api';
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
+import { DashboardStats } from '../../lib/api';
 import { TrendingUp, Target, Globe, BarChart3 } from 'lucide-react';
 
 interface StatsCardsProps {

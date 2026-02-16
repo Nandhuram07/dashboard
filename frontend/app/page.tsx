@@ -1,16 +1,16 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import FilterPanel from '@/components/filters/FilterPanel';
-import StatsCards from '@/components/dashboard/StatsCards';
-import IntensityByCountryChart from '@/components/charts/IntensityByCountryChart';
-import LikelihoodByTopicChart from '@/components/charts/LikelihoodByTopicChart'
-import RelevanceAsiaEuropeChart from '@/components/charts/RelevanceAsiaEuropeChart';
-import YearDistributionChart from '@/components/charts/YearDistributionChart';
-import { dataService, FilterOptions, DashboardStats } from '@/lib/api';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import FilterPanel from '../components/filters/FilterPanel';
+import StatsCards from '../components/dashboard/StatsCards';
+import IntensityByCountryChart from '../components/charts/IntensityByCountryChart';
+import LikelihoodByTopicChart from '../components/charts/LikelihoodByTopicChart'
+import RelevanceAsiaEuropeChart from '../components/charts/RelevanceAsiaEuropeChart';
+import YearDistributionChart from '../components/charts/YearDistributionChart';
+import { dataService, FilterOptions, DashboardStats } from '../lib/api';
+import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { BarChart3, Loader2 } from 'lucide-react';
-import RelevanceAmericasAfricasChart from '@/components/charts/RelevanceAmericasAfricasChart';
+import RelevanceAmericasAfricasChart from '../components/charts/RelevanceAmericasAfricasChart';
 
 export default function Dashboard() {
   const [filters, setFilters] = useState<FilterOptions>({});
