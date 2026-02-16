@@ -1,11 +1,10 @@
 
 [build]
-  base = "frontend"
-  publish = ".next"
-  command = "npm run build"
+  publish = "frontend/.next"
+  command = "npm install && cd frontend && npm install && npm run build"
 
 [functions]
-  directory = "../backend/src/functions"
+  directory = "backend/src/functions"
   node_bundler = "esbuild"
 
 [[redirects]]
