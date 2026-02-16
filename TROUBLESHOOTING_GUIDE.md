@@ -34,9 +34,14 @@ Your IP address is blocked by MongoDB Atlas firewall. You must whitelist it.
 7.  Wait 1-2 minutes for the changes to deploy.
 8.  Try running `npm run seed` again.
 
+### Note on Persistent Connection Failures
+If you still get `ECONNREFUSED` or `querySrv` errors after whitelisting `0.0.0.0/0`, your **local network or ISP** is likely blocking the connection (common in corporate/university networks).
+
+**Workaround:** Proceed with **deployment**. Cloud providers (Netlify, Render) do not have these restrictions, so your app will likely work when deployed even if it fails locally.
+
 ---
 
-## 3. Deployment Checklist
+## 3. GitHub & Deployment Checklist
 
 Before pushing to GitHub:
 
@@ -46,7 +51,13 @@ Before pushing to GitHub:
 
 ## Next Steps
 
-Once theabove are fixed:
-1.  Verify local setup: `npm run seed` then `npm run dev`.
-2.  Push to GitHub.
-3.  Connect to Netlify (Frontend) and Render/Railway (Backend).
+Since local connection is blocked, let's deploy:
+
+1.  Create a **New Repository** on GitHub.
+2.  Run the following commands in your terminal:
+    ```bash
+    git remote add origin <your-github-repo-url>
+    git branch -M main
+    git push -u origin main
+    ```
+3.  Connect the repo to Netlify (Frontend) and Render/Railway (Backend).

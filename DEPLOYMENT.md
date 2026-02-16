@@ -56,9 +56,11 @@ You **MUST** set these in Netlify (Site Settings -> Environment Variables):
 
 | Key | Value | Description |
 | :--- | :--- | :--- |
-| `MONGODB_URI` | `mongodb+srv://...` | **REQUIRED**. Cloud MongoDB connection string. |
+| `MONGODB_URI` | `mongodb+srv://...` | **REQUIRED**. Copy from your backend `.env`. |
 | `NODE_ENV` | `production` | Optimization mode. |
-| `NEXT_PUBLIC_API_URL`| `/api` | **IMPORTANT**. Relative path allows the proxy to work. |
+| `NEXT_PUBLIC_API_URL`| `/api` | **IMPORTANT**. Set this exactly to `/api` (not localhost). |
+
+**Note:** You add ALL of these in the same place: **Site Settings -> Environment Variables**. Netlify makes them available to both the build process (frontend) and the functions (backend).
 
 ## Troubleshooting
 
